@@ -1,0 +1,7 @@
+#日志配置
+logging:
+  config: classpath:log4j2.xml
+  level:
+    root: info
+  file:
+    path: ${spring.application.name}

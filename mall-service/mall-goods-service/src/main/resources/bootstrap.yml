@@ -1,0 +1,56 @@
+server:
+  port: 8081
+spring:
+  profiles:
+    active: dev
+  application:
+    name: mall-goods
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.99.247.124:3306/shop_goods?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: Xh@2024
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: 39.99.247.124:8848
+      discovery:
+        #Nacos的注册地址
+        server-addr: 39.99.247.124:8848
+    alibaba:
+      seata:
+        tx-service-group: tx_shop
+  #Redis配置
+  redis:
+    host: 39.99.247.124
+    port: 6379
+    password: dF@2024
+management:
+  health:
+    db:
+      enabled: false
+  endpoint:
+    health:
+      show-details: always
+#    logfile:
+#      enabled: true
+#      external-file: D:\\106\\log
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+# ====================MybatisPlus====================
+mybatis-plus:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.study.vip.mall.*.model
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#日志配置
+#logging:
+#  pattern:
+#    console: "%msg%n"
+#  file:
+#    path: D:\\106\\log
